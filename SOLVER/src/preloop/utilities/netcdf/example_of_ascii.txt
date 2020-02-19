@@ -1,0 +1,63 @@
+@@ NETCDF ASCII FORMAT @@
+Do not change this first line!
+
+Only those lines between @VAR_START and @VAR_END are actually read.
+Feel free to comment outside @VAR_START and @VAR_END.
+
+
+To define a variable (replace AT_ with @):
+
+AT_VAR_START VAR_NAME
+VAR_DIMS
+VAR_DATA
+AT_VAR_END VAR_NAME
+
+Notes:
+a) VAR_NAME specifies the name of variable;
+b) VAR_DIMS specify the dimensions of the variable; 
+            must be written in a single line right after the line of @VAR_START;
+c) VAR_DATA specify the values of the variable; 
+            has a length equal to the product fo VAR_DIMS;
+            must be followed by the line of @VAR_END;
+            must be ordered row-major or C-like; 
+            can be separated by spaces, tabs and line-breaks;
+            has a type (int/float/double) depending on the code to read it.
+
+
+###########################################
+An example of 1D variables, named var1d
+
+@VAR_START var1d
+4
+1. -2.5 -3 4e2
+@VAR_END var1d
+
+
+###########################################
+An example of 2D varaibles, named var2d
+
+@VAR_START var2d
+2 3
+11 12 13
+21 22 23
+@VAR_END var2d
+
+It is unnecessary to write the data as a matrix, 
+e.g., the following definition is equivalent:
+
+@VAR_START var2d_eq
+2 3
+11 
+12 13 21 
+22 23
+@VAR_END var2d_eq
+
+
+###########################################
+An example of 3D varaibles, named var3d
+
+@VAR_START var3d
+2 2 2
+111 112 121 122 211 212 221 222
+@VAR_END var3d
+
